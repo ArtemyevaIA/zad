@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v2.6(vk)")
+script_version("beta_v2.7(vk)")
 
 require "lib.moonloader"
 
@@ -651,10 +651,10 @@ function main()
                 while sampIsDialogActive(2022) do wait(100) end
                 local result, button, _, input = sampHasDialogRespond(2022)
                 if button == 1 then
-                    local _, who_id = sampGetPlayerIdByCharHandle(PLAYER_PED)
-                    local autor = sampGetPlayerNickname(who_id)
-                    local text = (who_id..' ['..id..']: ')
-                    
+                    local _, id = sampGetPlayerIdByCharHandle(PLAYER_PED)
+                    local nick = sampGetPlayerNickname(who_id)
+                    local text = (nick..' ['..id..']: ')
+
                     sendvkmsg(encodeUrl(text))
                 end
             end
