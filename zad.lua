@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v1.0")
+script_version("beta_v1.1")
 
 require "lib.moonloader"
 
@@ -794,6 +794,7 @@ function upd()
            Update.json_url = "https://raw.githubusercontent.com/ArtemyevaIA/zad/refs/heads/main/zad.json?" .. tostring(os.clock())
            Update.prefix = "[" .. string.upper(thisScript().name) .. "]: "
            Update.url = "https://github.com/ArtemyevaIA/zad"
+           sampShowDialog(0, "{FFA500}Вышло обновление", "{78dbe2}Скрипт был автоматически обновлен.", "Закрыть", "", DIALOG_STYLE_MSGBOX)
        end
    end
    if autoupdate_loaded and Update then
