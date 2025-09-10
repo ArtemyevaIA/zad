@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v1.3")
+script_version("beta_v1.4")
 
 require "lib.moonloader"
 
@@ -37,10 +37,11 @@ function main()
     end
 
     sampAddChatMessage('', -1)
-    sampAddChatMessage('Скрипт работы с совместными заданиями {FFA500}успешно загружен', -1)
-    sampAddChatMessage('Команда для открытия меню: {FFA500}/zad', -1)
-    sampAddChatMessage('Команда для ручного обновления: {FFA500}/upd', -1)
-    sampAddChatMessage('Разработал: {FFA500}Irin_Crown', -1)
+    sampAddChatMessage('', -1)
+    sampAddChatMessage('{AFEEEE}Скрипт работы с совместными заданиями {FFA500}успешно загружен', -1)
+    sampAddChatMessage('{AFEEEE}Команда для открытия меню: {FFA500}/zad', -1)
+    sampAddChatMessage('{00FFFF}Разработал: {FFA500}Irin_Crown', -1)
+    sampAddChatMessage('', -1)
     sampAddChatMessage('', -1)
 
     sampRegisterChatCommand('zad', zadmenu)
