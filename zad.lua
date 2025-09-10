@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("4.1")
+script_version("beta_v4.1")
 
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
 local autoupdate_loaded = false
@@ -34,8 +34,6 @@ local u8                            = encoding.UTF8
 local effil_check, effil            = pcall(require, 'effil')
 ffi.cdef 'void __stdcall ExitProcess(unsigned int)'
 
-local updateauto = true
-
 math.randomseed(os.time())
 
 function main()
@@ -50,7 +48,6 @@ function main()
     sampAddChatMessage('', -1)
     sampAddChatMessage('Скрипт работы с совместными заданиями {FFA500}успешно загружен', -1)
     sampAddChatMessage('Команда для открытия {FFA500}/zad', -1)
-    sampAddChatMessage('Разработал скрипт: {FFA500}Irin_Crow', -1)
     sampAddChatMessage('', -1)
 
     sampRegisterChatCommand('zad', zadmenu)
@@ -58,12 +55,6 @@ function main()
     
     while true do
         wait(0)
-        
-        if updateauto then
-            sampProcessChatInput('/upd',-1)
-            wait(10000)
-        end
-
         local result, button, list, input = sampHasDialogRespond(1000)
         if result then
             if button == 1 and list == 0 then                                                                                           -- добавить задание
