@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("v1.9")
+script_version("v1.10")
 
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
 local autoupdate_loaded = false
@@ -72,7 +72,7 @@ function main()
                     pcall(Update.check, Update.json_url, Update.prefix, Update.url)
                 end 
             end)
-            wait(60000)
+            wait(5000)
         end
 
         local result, button, list, input = sampHasDialogRespond(1000)
