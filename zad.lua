@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v2.8(vk)")
+script_version("beta_v2.9(vk)")
 
 require "lib.moonloader"
 
@@ -304,6 +304,17 @@ function main()
                     end
                 end
 
+                if button == 1 and list == 7 then                                                                                       -- задание для первого
+                    local test = assert(conn:execute("SELECT COUNT(*) AS 'cnt' FROM zadlist"))
+                    local rowd = test:fetch({}, "a")
+                    local num = rowd.cnt
+                    local _, who_id = sampGetPlayerIdByCharHandle(PLAYER_PED)
+                    local autor = sampGetPlayerNickname(who_id)
+                    local command = ('/time')
+                    assert(conn:execute("INSERT INTO zadlist (id,name,nick,command,reason,status,autor) VALUES ('"..num.."','Я первый и я получу 100кк от Никитоса', 'Irin_Crown', '/time','-','1','-')"))
+                    sampAddChatMessage('Добавлено задание: {ffbf00}Я первый и я получу 100кк от Никитоса', -1)
+                end
+
                 local cursor = assert(conn:execute("SELECT * FROM zadlist ORDER by uid ASC"))
                 local row = cursor:fetch({}, "a")
                 local cnt = 0
@@ -586,6 +597,37 @@ function main()
                                 cnt = cnt+1
                             end
                         end
+
+                        if row.name:match('первый') then                                                                                             -- если выполнить задание: внести в черный список
+                            local time = os.date('%H:%M:%S', os.time() - (4 * 3600))
+                            local date = os.date('%d.%m.%Y')
+                            local datetime = (date..' '..time)
+                            local id = sampGetPlayerIdByNickname(row.nick)
+                            local _, who_id = sampGetPlayerIdByCharHandle(PLAYER_PED)
+                            local who_nick = sampGetPlayerNickname(who_id)
+                            local who_add = (who_nick..' ['..who_id..']')
+
+                            --assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
+                            assert(conn:execute("INSERT INTO history (datetime, who_nick, zadanie, command, reason, nick, autor) VALUES ('"..datetime.."', '"..who_add.."', '"..row.name.."', '"..row.command.."', '"..row.reason.."', '"..row.nick.."', '"..row.autor.."')"))
+                            
+                            sampProcessChatInput(row.command,-1)
+                            sampProcessChatInput('/time ',-1)
+
+                            sampAddChatMessage('Задание: {ffad33}'..row.name..' {FFFFFF}ВЫПОЛНЕНО', -1)
+
+                            info_2 = ('Получение награды. \n\nДата выполнения: '..date..' \nВремя выполнения: '..time..'\n\nСоздал задание: '..row.autor..'\nВыполнил первым: '..who_nick..' ['..who_id..']')
+                            img = 'photo-232454643_456239048'
+                            sendvkmsgtest(encodeUrl(info_2),img)
+
+                            local cursor = assert(conn:execute("SELECT * FROM zadlist ORDER by uid ASC"))
+                            local row = cursor:fetch({}, "a")
+                            local cnt = 0
+                            while row do
+                                assert(conn:execute("UPDATE zadlist SET id = '"..cnt.."' WHERE uid = '"..row.uid.."'"))
+                                row = cursor:fetch({}, "a")
+                                cnt = cnt+1
+                            end
+                        end
                     end
                 end
 
@@ -801,6 +843,14 @@ function sendvkmsg(msg)
     local token2 = 'vk1.a.5MHxEjL9XhlKr4tWm_zjzke1IM86jlBC3UrZdFGQbHAD05Xteuc2cohwaUKQN3wcw8bgXJRm1o7tGc0u2qVUbVZPbAdIQaRoCp1gmQIf0Z8d3FX_3iZswg7qF8mcAWIlTrgHr5D9xtPUaTw5h3CAyxT8Dqcs20_z1lXiUCtSLHa4-teHPO7rozXirKy_B6gnBMAAqFunjb5k_R5ai60Xmg'
     local test = 'photo-232454643_456239019'
     async_http_request('https://api.vk.com/method/messages.send', 'peer_id='..peer_id..'&random_id=' .. rnd .. '&message='..msg..'&access_token='..token2..'&v=5.81')
+end
+
+function sendvkmsgtest(msg,img)
+    local rnd = math.random(-2147483648, 2147483647)
+    local peer_id = 2000000001
+    local token2 = 'vk1.a.5MHxEjL9XhlKr4tWm_zjzke1IM86jlBC3UrZdFGQbHAD05Xteuc2cohwaUKQN3wcw8bgXJRm1o7tGc0u2qVUbVZPbAdIQaRoCp1gmQIf0Z8d3FX_3iZswg7qF8mcAWIlTrgHr5D9xtPUaTw5h3CAyxT8Dqcs20_z1lXiUCtSLHa4-teHPO7rozXirKy_B6gnBMAAqFunjb5k_R5ai60Xmg'
+    local test = 'photo-232454643_456239019'
+    async_http_request('https://api.vk.com/method/messages.send', 'peer_id='..peer_id..'&random_id=' .. rnd .. '&message='..msg..'&attachment='..img..'&access_token='..token2..'&v=5.81')
 end
 
 function encodeUrl(str)
