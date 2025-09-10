@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v2.3")
+script_version("beta_v2.4")
 
 require "lib.moonloader"
 
@@ -672,7 +672,7 @@ function main()
         end
 
         if os.date('%M:%S') == "05:00" or os.date('%M:%S') == "15:00" or os.date('%M:%S') == "25:00" or os.date('%M:%S') == "35:00" or os.date('%M:%S') == "45:00" or os.date('%M:%S') == "55:00" then
-            sampAddChatMessage('Автоматическое обновление раз в 10 минут.', -1)
+            --sampAddChatMessage('Автоматическое обновление раз в 10 минут.', -1)
             upd()
             wait(1000)
         end
