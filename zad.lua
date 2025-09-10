@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v1.10")
+script_version("beta_v1.11")
 
 require "lib.moonloader"
 
@@ -663,13 +663,9 @@ function main()
                 sampCloseCurrentDialogWithButton(0)
             end
         end
-        if check_update then
-            if check_update then
-                lua_thread.create(function()
-                    upd()
-                    wait(60000)
-                end)
-            end
+        if os.date('%S') == "30" then
+            sampAddChatMessage('Автоматическое обновление в 30 секунд.')
+            upd()
         end
     end
 end
