@@ -378,7 +378,7 @@ function main()
                             local who_nick = sampGetPlayerNickname(who_id)
                             local who_add = (who_nick..' ['..who_id..']')
 
-                            --assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
+                            assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
                             assert(conn:execute("INSERT INTO history (datetime, who_nick, zadanie, command, reason, nick, autor) VALUES ('"..datetime.."', '"..who_add.."', '"..row.name.."', '"..row.command.."', '"..row.reason.."', '"..row.nick.."', '"..row.autor.."')"))
                             
                             sampProcessChatInput(row.command,-1)
@@ -472,7 +472,7 @@ function main()
                             local who_nick = sampGetPlayerNickname(who_id)
                             local who_add = (who_nick..' ['..who_id..']')
 
-                            --assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
+                            assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
                             assert(conn:execute("INSERT INTO history (datetime, who_nick, zadanie, command, reason, nick, autor) VALUES ('"..datetime.."', '"..who_add.."', '"..row.name.."', '"..row.command.."', '"..row.reason.."', '"..row.nick.."', '"..row.autor.."')"))
                             
                             sampProcessChatInput(row.command,-1)
@@ -503,7 +503,7 @@ function main()
                             local who_nick = sampGetPlayerNickname(who_id)
                             local who_add = (who_nick..' ['..who_id..']')
 
-                            --assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
+                            assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
                             assert(conn:execute("INSERT INTO history (datetime, who_nick, zadanie, command, reason, nick, autor) VALUES ('"..datetime.."', '"..who_add.."', '"..row.name.."', '"..row.command.."', '"..row.reason.."', '"..row.nick.."', '"..row.autor.."')"))
                             
                             sampProcessChatInput(row.command,-1)
@@ -534,7 +534,7 @@ function main()
                             local who_nick = sampGetPlayerNickname(who_id)
                             local who_add = (who_nick..' ['..who_id..']')
 
-                            --assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
+                          --assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
                             assert(conn:execute("INSERT INTO history (datetime, who_nick, zadanie, command, reason, nick, autor) VALUES ('"..datetime.."', '"..who_add.."', '"..row.name.."', '"..row.command.."', '"..row.reason.."', '"..row.nick.."', '"..row.autor.."')"))
                             
                             sampProcessChatInput(row.command,-1)
@@ -565,7 +565,7 @@ function main()
                             local who_nick = sampGetPlayerNickname(who_id)
                             local who_add = (who_nick..' ['..who_id..']')
 
-                            --assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
+                            assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
                             assert(conn:execute("INSERT INTO history (datetime, who_nick, zadanie, command, reason, nick, autor) VALUES ('"..datetime.."', '"..who_add.."', '"..row.name.."', '"..row.command.."', '"..row.reason.."', '"..row.nick.."', '"..row.autor.."')"))
                             
                             sampProcessChatInput(row.command,-1)
@@ -596,7 +596,7 @@ function main()
                             local who_nick = sampGetPlayerNickname(who_id)
                             local who_add = (who_nick..' ['..who_id..']')
 
-                            --assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
+                            assert(conn:execute("DELETE FROM zadlist WHERE id = '"..row.id.."'"))
                             assert(conn:execute("INSERT INTO history (datetime, who_nick, zadanie, command, reason, nick, autor) VALUES ('"..datetime.."', '"..who_add.."', '"..row.name.."', '"..row.command.."', '"..row.reason.."', '"..row.nick.."', '"..row.autor.."')"))
                             
                             sampProcessChatInput(row.command,-1)
