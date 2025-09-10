@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("10.09.2025 11:55")
+script_version("10.09.2025 12:00")
 
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
 local autoupdate_loaded = false
@@ -50,7 +50,6 @@ function main()
     sampAddChatMessage('', -1)
 
     sampRegisterChatCommand('zad', zadmenu)
-    sampRegisterChatCommand('update', update)
     
     while true do
         wait(0)
@@ -784,8 +783,4 @@ if name:match('%a+') then
         return name
     end
  return name
-end
-
-function update()
-    pcall(Update.check, Update.json_url, Update.prefix, Update.url)
 end
