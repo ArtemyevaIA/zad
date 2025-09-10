@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v2.0.0")
+script_version("beta_v2.1")
 
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
 local autoupdate_loaded = false
