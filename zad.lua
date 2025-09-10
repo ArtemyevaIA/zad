@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v1.9")
+script_version("beta_v1.10")
 
 require "lib.moonloader"
 
@@ -664,12 +664,12 @@ function main()
             end
         end
         if check_update then
-            -- if check_update then
-            --     --lua_thread.create(function()
-            --         upd()
-            --         wait(60000)
-            --     --end)
-            -- end
+            if check_update then
+                lua_thread.create(function()
+                    upd()
+                    wait(60000)
+                end)
+            end
         end
     end
 end
