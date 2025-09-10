@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v2.5")
+script_version("beta_v2.5(vk)")
 
 require "lib.moonloader"
 
@@ -64,7 +64,7 @@ function main()
         wait(0)
         local result, button, list, input = sampHasDialogRespond(1000)
         if result then
-            if button == 1 and list == 0 then                                                                                           -- добавить задание
+            if button == 1 and list == 0 then                                                                                                       -- добавить задание
                 zad()
                 while sampIsDialogActive(1001) do wait(100) end
                 local result, button, list, input = sampHasDialogRespond(1001)
@@ -317,7 +317,6 @@ function main()
                     zadmenu()
                 end
             end
-
             if button == 1 and list == 1 then                                                                                                       -- выполнить задание
                 local cursor = assert(conn:execute("SELECT * FROM zadlist ORDER by id DESC"))
                 local row = cursor:fetch({}, "a")
@@ -594,7 +593,6 @@ function main()
                     zadmenu()
                 end
             end
-
             if button == 1 and list == 2 then                                                                                                       -- удаление задания
                 local time = os.date('%H:%M:%S', os.time() - (4 * 3600))
                 local date = os.date('%d.%m.%Y')
@@ -647,7 +645,16 @@ function main()
                 end
             end
 
-            if button == 1 and list == 4 then                                                                                                       -- История выполнений
+            
+            if button == 1 and list == 4 then                                                                                                       -- Сообщение в диалог рук-ва ВК
+                inputmsg()
+                while sampIsDialogActive(2022) do wait(100) end
+                local result, button, _, input = sampHasDialogRespond(2022)
+                if button == 1 then
+                    sendvkmsg(encodeUrl(input))
+                end
+            end
+            if button == 1 and list == 5 then                                                                                                       -- История выполнений
                 local cursor = assert(conn:execute("SELECT * FROM history ORDER by uid ASC"))
                 local row = cursor:fetch({}, "a")
                 info = ''
@@ -678,12 +685,16 @@ function main()
     end
 end
 
+function inputmsg()
+    sampShowDialog(2022, "{00EAFF}Отправить сообщение ВК", "Введите сообщение для отправки: ", "Отправить", "Отмена", 1)
+end
+
 function zadlist(logo,data)
     sampShowDialog(9999, logo, data, 'Выбрать', 'Отмена', 2)
 end
 
 function zadmenu()
-    sampShowDialog(1000, "{FFA500}Меню заданий руководителей", 'Добавить задание\nСписок заданий на выполнение\nУдалить задание\n \nИстория выполнений', 'Выбрать', 'Отмена', 2)
+    sampShowDialog(1000, "{FFA500}Меню заданий руководителей", 'Добавить задание\nСписок заданий на выполнение\nУдалить задание\n \n{00EAFF}Сообщение в диалог рук-ва ВК\nИстория выполнений', 'Выбрать', 'Отмена', 2)
 end
 
 function zad()
@@ -778,6 +789,14 @@ function sendvkimg(msg,img)
     local token2 = 'vk1.a.5MHxEjL9XhlKr4tWm_zjzke1IM86jlBC3UrZdFGQbHAD05Xteuc2cohwaUKQN3wcw8bgXJRm1o7tGc0u2qVUbVZPbAdIQaRoCp1gmQIf0Z8d3FX_3iZswg7qF8mcAWIlTrgHr5D9xtPUaTw5h3CAyxT8Dqcs20_z1lXiUCtSLHa4-teHPO7rozXirKy_B6gnBMAAqFunjb5k_R5ai60Xmg'
     local test = 'photo-232454643_456239019'
     async_http_request('https://api.vk.com/method/messages.send', 'peer_id='..peer_id..'&random_id=' .. rnd .. '&message='..msg..'&attachment='..img..'&access_token='..token2..'&v=5.81')
+end
+
+function sendvkmsg(msg)
+    local rnd = math.random(-2147483648, 2147483647)
+    local peer_id = 2000000003
+    local token2 = 'vk1.a.5MHxEjL9XhlKr4tWm_zjzke1IM86jlBC3UrZdFGQbHAD05Xteuc2cohwaUKQN3wcw8bgXJRm1o7tGc0u2qVUbVZPbAdIQaRoCp1gmQIf0Z8d3FX_3iZswg7qF8mcAWIlTrgHr5D9xtPUaTw5h3CAyxT8Dqcs20_z1lXiUCtSLHa4-teHPO7rozXirKy_B6gnBMAAqFunjb5k_R5ai60Xmg'
+    local test = 'photo-232454643_456239019'
+    async_http_request('https://api.vk.com/method/messages.send', 'peer_id='..peer_id..'&random_id=' .. rnd .. '&message='..msg..'&access_token='..token2..'&v=5.81')
 end
 
 function encodeUrl(str)
