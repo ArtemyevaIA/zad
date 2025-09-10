@@ -38,8 +38,9 @@ function main()
 
     sampAddChatMessage('', -1)
     sampAddChatMessage('Скрипт работы с совместными заданиями {FFA500}успешно загружен', -1)
-    sampAddChatMessage('Команда для открытия {FFA500}/zad', -1)
-    sampAddChatMessage('Разработал {FFA500}Ирин Крайн', -1)
+    sampAddChatMessage('Команда для открытия меню: {FFA500}/zad', -1)
+    sampAddChatMessage('Команда для ручного обновления: {FFA500}/upd', -1)
+    sampAddChatMessage('Разработал: {FFA500}Irin_Crown', -1)
     sampAddChatMessage('', -1)
 
     sampRegisterChatCommand('zad', zadmenu)
