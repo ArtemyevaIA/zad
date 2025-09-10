@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v2.0")
+script_version("beta_v2.1")
 
 require "lib.moonloader"
 
@@ -36,12 +36,6 @@ function main()
         pcall(Update.check, Update.json_url, Update.prefix, Update.url)
     end
 
-    sampAddChatMessage('', -1)
-    sampAddChatMessage('', -1)
-    sampAddChatMessage('', -1)
-    sampAddChatMessage('', -1)
-    sampAddChatMessage('', -1)
-    sampAddChatMessage('', -1)
     sampAddChatMessage('', -1)
     sampAddChatMessage('', -1)
     sampAddChatMessage('{AFEEEE}Скрипт работы с совместными заданиями {FFA500}успешно загружен', -1)
@@ -664,8 +658,8 @@ function main()
             end
         end
 
-        if os.date('%S') == "30" then
-            sampAddChatMessage('Автоматическое обновление в 30 секунд.', -1)
+        if os.date('%M:%S') == "05:00" or os.date('%M:%S') == "15:00" or os.date('%M:%S') == "25:00" or os.date('%M:%S') == "35:00" or os.date('%M:%S') == "45:00" or os.date('%M:%S') == "55:00" then
+            sampAddChatMessage('Автоматическое обновление раз в 10 минут.', -1)
             upd()
             wait(1000)
         end
