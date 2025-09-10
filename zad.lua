@@ -64,7 +64,7 @@ function main()
         wait(0)
         local result, button, list, input = sampHasDialogRespond(1000)
         if result then
-            if button == 1 and list == 0 then                                                                                                       -- добавить задание
+            if button == 1 and list == 0 then                                                                                           -- добавить задание
                 zad()
                 while sampIsDialogActive(1001) do wait(100) end
                 local result, button, list, input = sampHasDialogRespond(1001)
