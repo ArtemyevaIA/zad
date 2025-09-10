@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v4.1")
+script_version("beta_v4.3")
 
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
 local autoupdate_loaded = false
@@ -33,6 +33,7 @@ encoding.default                    = "CP1251"
 local u8                            = encoding.UTF8
 local effil_check, effil            = pcall(require, 'effil')
 ffi.cdef 'void __stdcall ExitProcess(unsigned int)'
+local check_update = true
 
 math.randomseed(os.time())
 
@@ -662,6 +663,9 @@ function main()
             if button == 0 then
                 sampCloseCurrentDialogWithButton(0)
             end
+        end
+        if check_update then
+            sampProcessChatInput('/upd', -1)
         end
     end
 end
