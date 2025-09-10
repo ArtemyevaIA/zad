@@ -1,5 +1,7 @@
 script_name("zad")
-script_version("0.0.1")
+script_version("realise.1")
+
+require "lib.moonloader"
 
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
 local autoupdate_loaded = false
@@ -11,7 +13,6 @@ local trstl = {['B'] = 'Á',['Z'] = 'Ç',['T'] = 'Ò',['Y'] = 'É',['P'] = 'Ï',['J']
 local mysql = require "luasql.mysql"
 local env = assert(mysql.mysql())
 local conn = assert(env:connect("arizona", "longames", "q2w3e4r5", "92.63.71.249", 3306))
-
 local ImGui                         = require 'imgui'
 local sampev                        = require "lib.samp.events"
 local requests                      = require 'requests'
