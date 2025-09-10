@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("test1")
+script_version("alpha_v1.0")
 
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
 local autoupdate_loaded = false
@@ -49,6 +49,7 @@ function main()
     sampAddChatMessage('', -1)
     sampAddChatMessage('Скрипт работы с совместными заданиями {FFA500}успешно загружен', -1)
     sampAddChatMessage('Команда для открытия {FFA500}/zad', -1)
+    sampAddChatMessage('Разработал {FFA500}Ирин Крайн', -1)
     sampAddChatMessage('', -1)
 
     sampRegisterChatCommand('zad', zadmenu)
