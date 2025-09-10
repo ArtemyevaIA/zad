@@ -325,7 +325,7 @@ function main()
                 
                 while row do
                     cnt = cnt+1
-                    list = '['..row.id..'] '..row.name..'\n'..list
+                    list = row.name..'\n'..list
                     row = cursor:fetch({}, "a")
                 end
 
@@ -639,7 +639,7 @@ function main()
                 
                 while row do                                                                                 
                     cnt = cnt+1
-                    list = '['..row.id..'] '..row.name..'\n'..list
+                    list = row.name..'\n'..list
                     row = cursor:fetch({}, "a")
                 end
 
