@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("10.09.2025")
+script_version("v2")
 
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
 local autoupdate_loaded = false
@@ -46,7 +46,7 @@ function main()
     end
 
     sampAddChatMessage('', -1)
-    sampAddChatMessage('Тестовый конфиг загружен', -1)
+    sampAddChatMessage('Тестовый конфиг загружен, а ты пидорас!', -1)
     sampAddChatMessage('', -1)
 
     sampRegisterChatCommand('zad', zadmenu)
