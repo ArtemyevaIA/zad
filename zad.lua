@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v1.12")
+script_version("beta_v2.0")
 
 require "lib.moonloader"
 
@@ -663,9 +663,11 @@ function main()
                 sampCloseCurrentDialogWithButton(0)
             end
         end
+
         if os.date('%S') == "30" then
-            sampAddChatMessage('Автоматическое обновление в 30 секунд.')
+            sampAddChatMessage('Автоматическое обновление в 30 секунд.', -1)
             upd()
+            wait(1000)
         end
     end
 end
