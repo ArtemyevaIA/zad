@@ -46,6 +46,7 @@ function main()
     while not isSampAvailable() do wait(0) end
     
     if autoupdate_loaded and enable_autoupdate and Update then
+        sampAddChatMessage('{AFEEEE}Проводится проверка обновлений скрипта для заместителей.', -1)
         pcall(Update.check, Update.json_url, Update.prefix, Update.url)
     end
 
