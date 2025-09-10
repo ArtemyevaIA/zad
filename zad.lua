@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v1.8")
+script_version("beta_v1.9")
 
 require "lib.moonloader"
 
@@ -36,6 +36,12 @@ function main()
         pcall(Update.check, Update.json_url, Update.prefix, Update.url)
     end
 
+    sampAddChatMessage('', -1)
+    sampAddChatMessage('', -1)
+    sampAddChatMessage('', -1)
+    sampAddChatMessage('', -1)
+    sampAddChatMessage('', -1)
+    sampAddChatMessage('', -1)
     sampAddChatMessage('', -1)
     sampAddChatMessage('', -1)
     sampAddChatMessage('{AFEEEE}Скрипт работы с совместными заданиями {FFA500}успешно загружен', -1)
@@ -658,12 +664,12 @@ function main()
             end
         end
         if check_update then
-            if check_update then
-                --lua_thread.create(function()
-                    upd()
-                    wait(60000)
-                --end)
-            end
+            -- if check_update then
+            --     --lua_thread.create(function()
+            --         upd()
+            --         wait(60000)
+            --     --end)
+            -- end
         end
     end
 end
