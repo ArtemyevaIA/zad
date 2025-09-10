@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v2.9(vk)")
+script_version("beta_v3.0(vk)")
 
 require "lib.moonloader"
 
@@ -302,17 +302,6 @@ function main()
                             sampAddChatMessage('Добавлено задание: {ffbf00}'..zadanie, -1)
                         end
                     end
-                end
-
-                if button == 1 and list == 7 then                                                                                       -- задание для первого
-                    local test = assert(conn:execute("SELECT COUNT(*) AS 'cnt' FROM zadlist"))
-                    local rowd = test:fetch({}, "a")
-                    local num = rowd.cnt
-                    local _, who_id = sampGetPlayerIdByCharHandle(PLAYER_PED)
-                    local autor = sampGetPlayerNickname(who_id)
-                    local command = ('/time')
-                    assert(conn:execute("INSERT INTO zadlist (id,name,nick,command,reason,status,autor) VALUES ('"..num.."','Я первый и я получу 100кк от Никитоса', 'Irin_Crown', '/time','-','1','-')"))
-                    sampAddChatMessage('Добавлено задание: {ffbf00}Я первый и я получу 100кк от Никитоса', -1)
                 end
 
                 local cursor = assert(conn:execute("SELECT * FROM zadlist ORDER by uid ASC"))
@@ -744,7 +733,7 @@ function zadmenu()
 end
 
 function zad()
-    sampShowDialog(1001, "Добавить задание в очередь", "Выдать похвалу\nПовысить сотрудника\nПринять в организацию\nУстановить отдел\nВыдать выговор\nУволить из организации\nЗанести в ЧС орг", 'Выбрать', 'Отмена', 2)
+    sampShowDialog(1001, "Добавить задание в очередь", "Выдать похвалу\nПовысить сотрудника\nПринять в организацию\nУстановить отдел\nВыдать выговор\nУволить из организации\nЗанести в ЧС орг\nВременно", 'Выбрать', 'Отмена', 2)
 end
 
 function inputnick()
@@ -847,7 +836,7 @@ end
 
 function sendvkmsgtest(msg,img)
     local rnd = math.random(-2147483648, 2147483647)
-    local peer_id = 2000000001
+    local peer_id = 2000000003
     local token2 = 'vk1.a.5MHxEjL9XhlKr4tWm_zjzke1IM86jlBC3UrZdFGQbHAD05Xteuc2cohwaUKQN3wcw8bgXJRm1o7tGc0u2qVUbVZPbAdIQaRoCp1gmQIf0Z8d3FX_3iZswg7qF8mcAWIlTrgHr5D9xtPUaTw5h3CAyxT8Dqcs20_z1lXiUCtSLHa4-teHPO7rozXirKy_B6gnBMAAqFunjb5k_R5ai60Xmg'
     local test = 'photo-232454643_456239019'
     async_http_request('https://api.vk.com/method/messages.send', 'peer_id='..peer_id..'&random_id=' .. rnd .. '&message='..msg..'&attachment='..img..'&access_token='..token2..'&v=5.81')
