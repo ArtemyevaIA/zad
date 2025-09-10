@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("11.09.2025")
+script_version("20.09.2025")
 
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
 local autoupdate_loaded = false
@@ -9,7 +9,7 @@ if enable_autoupdate then
     if updater_loaded then
         autoupdate_loaded, Update = pcall(Updater)
         if autoupdate_loaded then
-            Update.json_url = "https://raw.githubusercontent.com/ArtemyevaIA/zad/refs/heads/main/zad.json" .. tostring(os.clock())
+            Update.json_url = "https://raw.githubusercontent.com/ArtemyevaIA/zad/refs/heads/main/zad.json?" .. tostring(os.clock())
             Update.prefix = "[" .. string.upper(thisScript().name) .. "]: "
             Update.url = "https://github.com/ArtemyevaIA/zad"
         end
