@@ -50,7 +50,7 @@ function main()
     sampAddChatMessage('', -1)
 
     sampRegisterChatCommand('zad', zadmenu)
-    sampRegisterChatCommand('update', update)
+    sampRegisterChatCommand('upd', upd)
     
     while true do
         wait(0)
