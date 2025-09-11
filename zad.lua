@@ -1,5 +1,5 @@
 script_name("zad")
-script_version("beta_v3.0")
+script_version("Realise_v1.0")
 
 require "lib.moonloader"
 
